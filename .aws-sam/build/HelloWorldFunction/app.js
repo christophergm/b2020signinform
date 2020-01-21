@@ -82,50 +82,56 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/signin-processor/app.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/signin-processor/app.ts");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/signin-processor/app.js":
+/***/ "./src/signin-processor/app.ts":
 /*!*************************************!*\
-  !*** ./src/signin-processor/app.js ***!
+  !*** ./src/signin-processor/app.ts ***!
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 // const axios = require('axios')
 // const url = 'http://checkip.amazonaws.com/';
 let response;
-
 /**
  *
  * Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
  * @param {Object} event - API Gateway Lambda Proxy Input Format
  *
- * Context doc: https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html 
+ * Context doc: https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html
  * @param {Object} context
  *
  * Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
  * @returns {Object} object - API Gateway Lambda Proxy Output Format
- * 
+ *
  */
-exports.lambdaHandler = async (event, context) => {
+exports.lambdaHandler = (event, context) => __awaiter(this, void 0, void 0, function* () {
     try {
         let hostName;
         let eventZipCode;
         let csvData;
-
         if (event.body !== null && event.body !== undefined) {
-            let body = JSON.parse(event.body)
+            let body = JSON.parse(event.body);
             if (body.hostName)
-              hostName = body.hostName;
+                hostName = body.hostName;
             if (body.zipCode)
-              eventZipCode = body.eventZipCode;
+                eventZipCode = body.eventZipCode;
             if (body.csvData)
-              csvData = (Buffer.from(body.csvData, 'base64')).toString('ascii');
+                csvData = (Buffer.from(body.csvData, 'base64')).toString('ascii');
         }
-
         // const ret = await axios(url);
         // response = {
         //     'statusCode': 200,
@@ -138,20 +144,20 @@ exports.lambdaHandler = async (event, context) => {
         response = {
             'statusCode': 200,
             'headers': {
-              'Content-type': 'application/txt',
-              'content-disposition': 'attachment; filename=test.csv' 
+                'Content-type': 'application/txt',
+                'content-disposition': 'attachment; filename=test.csv'
             },
             'body': 'csvData',
             'isBase64Encoded': false
-        }
-        
-    } catch (err) {
+        };
+    }
+    catch (err) {
         console.log(err);
         return err;
     }
     console.log(response);
     return response;
-};
+});
 
 
 /***/ })

@@ -14,7 +14,10 @@ let response;
  * @returns {Object} object - API Gateway Lambda Proxy Output Format
  * 
  */
-exports.lambdaHandler = async (event, context) => {
+exports.lambdaHandler = async (
+    event:AWSLambda.APIGatewayEvent, 
+    context:AWSLambda.APIGatewayEventRequestContext
+  ) => {
     try {
         let hostName;
         let eventZipCode;
