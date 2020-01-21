@@ -1,0 +1,29 @@
+{
+  "name": "b2020signin",
+  "version": "1.0.0",
+  "description": "This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack-cli",
+    "clean": "rimraf .aws-sam .vscode",
+    "prebuild": "rimraf .aws-sam .vscode",
+    "prewatch": "rimraf .aws-sam .vscode",
+    "watch": "webpack-cli -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.40",
+    "@types/node": "^13.1.8",
+    "aws-sam-webpack-plugin": "^0.5.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.607.0",
+    "source-map-support": "^0.5.16"
+  }
+}

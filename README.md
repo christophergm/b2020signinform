@@ -17,6 +17,16 @@ The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI
 * [VS Code](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/welcome.html)
 * [Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)
 
+## Project setup
+
+1. Created SAM demo app with VS Code `AWS new SAM app` action
+2. Converted to typescript following https://vincedgy.github.io/aws-sam-webpack-typescript/ (https://www.youtube.com/watch?v=FINV-VmCXms)
+
+    ```sh
+    npm install webpack webpack-cli typescript ts-loader aws-sam-webpack-plugin @types/aws-lambda @types/node --save-dev
+    npm install aws-sdk source-map-support --save
+    ```
+
 ## Deploy the sample application
 
 The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that adds functionality for building and testing Lambda applications. It uses Docker to run your functions in an Amazon Linux environment that matches Lambda. It can also emulate your application's build environment and API.
