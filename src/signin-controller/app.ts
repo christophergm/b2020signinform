@@ -1,3 +1,5 @@
+import { processCsvData } from '../form-builder/processCsvData'
+import { renderHtmlOutput } from '../form-builder/renderHtmlOutput';
 // const axios = require('axios')
 // const url = 'http://checkip.amazonaws.com/';
 let response;
@@ -33,15 +35,11 @@ exports.lambdaHandler = async (
               csvData = (Buffer.from(body.csvData, 'base64')).toString('ascii');
         }
 
-        // const ret = await axios(url);
-        // response = {
-        //     'statusCode': 200,
-        //     'body': JSON.stringify({
-        //         hostName: hostName,
-        //         eventZipCode: eventZipCode,
-        //         csvData: csvData
-        //     })
-        //}
+        let eventData = processCsvData(csvData);
+        eventData.HostName = hostName;
+        eventData.EventZipCode = eventZipCode;
+        let eventHtml = renderHtmlOutput(eventData);
+
         response = {
             'statusCode': 200,
             'headers': {
@@ -56,6 +54,6 @@ exports.lambdaHandler = async (
         console.log(err);
         return err;
     }
-    console.log(response);
+    console.log(response);    
     return response;
 };

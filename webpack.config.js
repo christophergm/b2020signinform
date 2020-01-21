@@ -1,4 +1,5 @@
 const AwsSamPlugin = require("aws-sam-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 const awsSamPlugin = new AwsSamPlugin();
 
@@ -39,5 +40,11 @@ module.exports = {
   },
 
   // Add the AWS SAM Webpack plugin
-  plugins: [awsSamPlugin]
+  plugins: [
+    awsSamPlugin,
+    new CopyPlugin([
+      { from: 'src/form-builder/images', to: 'HelloWorldFunction/images' },
+      { from: 'src/form-builder/templates', to: 'HelloWorldFunction/templates' },
+    ])
+    ]
 };

@@ -1,4 +1,5 @@
 import fs = require('fs')
+import path = require("path");
 import Mustache = require("mustache");
 import {EventRegistrations, EventRegistrationPage, EventRegistrationDocument} from './classes';
 
@@ -15,11 +16,30 @@ export function renderHtmlOutput (evt: EventRegistrations): string {
     doc.Pages.push(p)
   }
 
-  let pageTemplate = fs.readFileSync('./src/templates/page.mustache');
+  let pageTemplate = loadTemplateFile('page.mustache');
   let pages = Mustache.render(pageTemplate.toString(), doc);
 
-  let bodyTemplate = fs.readFileSync('./src/templates/body.mustache');
+  let bodyTemplate = loadTemplateFile('body.mustache');
   let body = Mustache.render(bodyTemplate.toString(), [], {Pages: pages})
 
   return body;
+}
+
+function loadTemplateFile(templateName) {
+  const fileName = `./templates/${templateName}`
+  let resolved
+  if (process.env.LAMBDA_TASK_ROOT) {
+    resolved = path.resolve(process.env.LAMBDA_TASK_ROOT, fileName)
+  } else {
+    resolved = path.resolve(__dirname, fileName)
+  }
+  console.log(`Loading template at: ${resolved}`)
+  try {
+    const data = fs.readFileSync(resolved, 'utf8')
+    return data
+  } catch (error) {
+    const message = `Could not load template at: ${resolved}, error: ${JSON.stringify(error, null, 2)}`
+    console.error(message)
+    throw new Error(message)
+  }
 }
