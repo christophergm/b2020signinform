@@ -56,7 +56,7 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 
 ## Use Typescript build and the SAM CLI to build and test locally
 
-1. Compile typescript
+#### 1. Compile typescript
 
 The typescript and aws-sam-webpack-plugin (replacing SAM CLI) creates a deployment package, and saves it in the `.aws-sam/build` folder.
 
@@ -69,7 +69,7 @@ or run watch
 NODE_ENV=development npm run-script watch
 ```
 
-2. Run or Debug
+#### 2. Run or Debug
 
 Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project. Run functions locally and invoke them with the `sam local invoke` command.
 
@@ -78,7 +78,7 @@ sam local invoke -d 5858 -e events/event.json HelloWorldFunction
 ```
 Then use VS Code debug panel to debug.  Remove `-d 5858` to just run.
 
-3. Launch API
+#### 3. Launch API
 
 The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
 
