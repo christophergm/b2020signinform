@@ -82,15 +82,15 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/signin-processor/app.ts");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/signin-controller/app.ts");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/signin-processor/app.ts":
-/*!*************************************!*\
-  !*** ./src/signin-processor/app.ts ***!
-  \*************************************/
+/***/ "./src/signin-controller/app.ts":
+/*!**************************************!*\
+  !*** ./src/signin-controller/app.ts ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

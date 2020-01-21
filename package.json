@@ -15,8 +15,11 @@
   "license": "ISC",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.40",
+    "@types/jest": "^24.9.0",
     "@types/node": "^13.1.8",
     "aws-sam-webpack-plugin": "^0.5.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.3.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
     "webpack": "^4.41.5",
@@ -24,6 +27,10 @@
   },
   "dependencies": {
     "aws-sdk": "^2.607.0",
-    "source-map-support": "^0.5.16"
+    "csv-parse": "^4.8.5",
+    "fs": "0.0.1-security",
+    "mustache": "^4.0.0",
+    "source-map-support": "^0.5.16",
+    "wkhtmltopdf": "^0.3.4"
   }
 }

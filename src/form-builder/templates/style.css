@@ -1,0 +1,113 @@
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.field {
+  height: 40px;
+}
+
+.letter {
+  float: left;
+  text-align: center;
+  padding-top: 10px;
+}
+
+
+.header {
+  position:relative;
+}
+
+#host_name {
+  position: absolute;
+  top: 1.75em;
+  left: 48.5em;
+}
+
+#type_of_event {
+  position: absolute;
+  top: 4.0em;
+  left: 48.5em;
+}
+
+#event_zipcode {
+  position: absolute;
+  top: 6.5em;
+  left: 48.5em;
+}
+
+#date_of_event {
+  position: absolute;
+  top: 6.5em;
+  left: 67.75em;
+}
+
+.person {
+  position:relative;
+}
+
+#first_name {
+  position: absolute;
+  top: 0.5em;
+  left: 7.625em;
+  width: 18.7em;
+}
+
+#first_name .letter {
+    width: 7.14%;
+}
+
+#last_name {
+  position: absolute;
+  top: 0.5em;
+  left: 32.75em;
+  width: 20em;
+}
+
+#last_name .letter {
+    width: 6.666%;
+}
+
+#phone {
+  position: absolute;
+  top: 0.5em;
+  left: 58.123em;
+  width: 16em;
+}
+
+#phone .letter {
+  width: 8.3333%;  
+}
+
+#email {
+  position: absolute;
+  top: 3.25em;
+  left: 5em;
+  width: 45.4em;
+}
+
+#email .letter {
+  width: 2.94%;  
+}
+
+#zipcode {
+  position: absolute;
+  top: 3.25em;
+  left: 52.9em;
+  width: 6.66em;
+}
+
+#zipcode .letter {
+  width: 20%;  
+}
+
+/*
+@media print {
+    body{
+        width: 22in;
+        height: 5in;
+   } 
+}
+*/
+
