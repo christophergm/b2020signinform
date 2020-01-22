@@ -67,7 +67,31 @@ docker cp <containerid>:/root/wkhtmltopdf.zip .
 
 ## Use Typescript build and the SAM CLI to build and test locally
 
-#### 0. Build lambda Layer for WKHTMLTOPDF dependency
+#### 0. Build lambda Layer for WkHtmlToPdf dependency
+
+Use `yumbda` to build wkhtmltopdf dependency in a Lambda Layer, as documented here:
+https://github.com/lambci/yumda
+
+Look at available dependencies
+```
+docker run --rm lambci/yumda:2 yum list available
+```
+
+Set up dependencies in a local folder using docker
+```
+mkdir layer
+docker run --rm -v "$PWD"/layer:/lambda/opt lambci/yumda:2 yum install -y git wkhtmltopdf.x86_64 libjpeg-turbo.x86_64 libpng.x86_64
+```
+
+Create a zipped version (NOT with the `-y` option so that symlinks are collapsed. This allows the layer to work in a local environment as a workaround to this bug https://github.com/awslabs/aws-sam-cli/issues/878)
+
+```
+cd layer
+$ zip -r ../layer.zip .
+```
+
+A problem with removing symlinks is large size. Unzip, remove extra files like `git` folder and dupe `lib` files.  Then re-zip and upload to an AWS Layer.
+
 
 #### 1. Compile typescript
 
