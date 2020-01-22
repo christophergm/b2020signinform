@@ -1,5 +1,6 @@
 import { processCsvData } from '../form-builder/processCsvData'
 import { renderHtmlOutput } from '../form-builder/renderHtmlOutput';
+import { createPdfAsync } from '../form-builder/createPdf';
 // const axios = require('axios')
 // const url = 'http://checkip.amazonaws.com/';
 let response;
@@ -39,15 +40,16 @@ exports.lambdaHandler = async (
         eventData.HostName = hostName;
         eventData.EventZipCode = eventZipCode;
         let eventHtml = renderHtmlOutput(eventData);
+        let pdfDocBase64 = await createPdfAsync(eventHtml);
 
         response = {
             'statusCode': 200,
             'headers': {
               'Content-type': 'application/txt',
-              'content-disposition': 'attachment; filename=test.csv' 
+              'content-disposition': 'attachment; filename=test.pdf' 
             },
-            'body': 'csvData',
-            'isBase64Encoded': false
+            'body': pdfDocBase64,
+            'isBase64Encoded': true
         }
         
     } catch (err) {

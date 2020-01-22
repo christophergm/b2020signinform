@@ -54,7 +54,20 @@ The first command will build the source of your application. The second command 
 
 You can find your API Gateway Endpoint URL in the output values displayed after deployment.
 
+## Lambda environment
+
+wkhtmltopdf is needed as an executable. Lambda layer ZIP created as described here:
+https://gist.github.com/InfeCtlll3/526bc5eee5b13046b2b2d37f40ccffaa
+
+```
+docker ps
+docker cp <containerid>:/root/wkhtmltopdf.zip .
+```
+
+
 ## Use Typescript build and the SAM CLI to build and test locally
+
+#### 0. Build lambda Layer for WKHTMLTOPDF dependency
 
 #### 1. Compile typescript
 
@@ -74,7 +87,7 @@ NODE_ENV=development npm run-script watch
 Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project. Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-sam local invoke -d 5858 -e events/event.json HelloWorldFunction
+sam local invoke -e events/event.json HelloWorldFunction -d 5858 
 ```
 Then use VS Code debug panel to debug.  Remove `-d 5858` to just run.
 

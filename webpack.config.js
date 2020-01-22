@@ -1,7 +1,8 @@
 const AwsSamPlugin = require("aws-sam-webpack-plugin");
+const awsSamPlugin = new AwsSamPlugin();
+
 const CopyPlugin = require('copy-webpack-plugin');
 
-const awsSamPlugin = new AwsSamPlugin();
 
 module.exports = {
   // Loads the entry object from the AWS::Serverless::Function resources in your
@@ -45,6 +46,7 @@ module.exports = {
     new CopyPlugin([
       { from: 'src/form-builder/images', to: 'HelloWorldFunction/images' },
       { from: 'src/form-builder/templates', to: 'HelloWorldFunction/templates' },
+      { from: 'bin', to: '.' },  // move binaries to LAMBDA_TASK_ROOT
     ])
     ]
 };

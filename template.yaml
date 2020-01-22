@@ -17,6 +17,8 @@ Resources:
       CodeUri: src/signin-controller/
       Handler: app.lambdaHandler
       Runtime: nodejs12.x
+      Layers:
+        - arn:aws:lambda:us-west-2:604251901099:layer:wkhtmltopdf:5
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
