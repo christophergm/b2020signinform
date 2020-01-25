@@ -46,7 +46,6 @@ module.exports = {
     new CopyPlugin([
       { from: 'src/form-builder/images', to: 'HelloWorldFunction/images' },
       { from: 'src/form-builder/templates', to: 'HelloWorldFunction/templates' },
-      { from: 'bin', to: '.' },  // move binaries to LAMBDA_TASK_ROOT
     ])
     ]
 };
