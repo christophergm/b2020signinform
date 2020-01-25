@@ -51,7 +51,7 @@ exports.lambdaHandler = async (
               'Content-type': 'application/pdf',
               'content-disposition': 'attachment; filename=test.pdf' 
             },
-            'body':  (Buffer.from(pdfDocBase64, 'base64')).toString('ascii'),
+            'body': pdfDocBase64,
             'isBase64Encoded': true
         }
         

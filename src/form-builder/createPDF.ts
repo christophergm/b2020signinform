@@ -2,22 +2,6 @@ const wkhtmltopdf = require('wkhtmltopdf');
 const fs = require("fs");
 const PdfCreationTimout = 5000;
 
-export function createPdf (htmlDoc: string) {
-
-  wkhtmltopdf(htmlDoc, {
-    output: 'demo.pdf',
-    pageSize: 'letter',
-    orientation: 'landscape',
-    dpi: 2000  // high DPI required so demical percentages in CSS are followed with precision
-  });
-
-  var stream = wkhtmltopdf('<h1>Test</h1><p>Hello world</p>');
-
-  var s = stream.toString();
-
-}
-
-
 export async function createPdfAsync (htmlDoc: string): Promise<string> {
   let wkHtmlToPdfOptions = {
     pageSize: 'letter',
@@ -25,7 +9,6 @@ export async function createPdfAsync (htmlDoc: string): Promise<string> {
     dpi: 2000  // high DPI required so demical percentages in CSS are followed with precision
   }
   let timedOut = false;
-
 	let p = new Promise<string>((resolve, reject) => {
 			let chunks = [];
 			let timedOut = false;

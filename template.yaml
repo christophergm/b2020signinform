@@ -9,6 +9,15 @@ Description: >
 Globals:
   Function:
     Timeout: 3
+  Api:
+    # Send/receive binary data through the APIs
+    BinaryMediaTypes:
+      # These are equivalent to image/gif and image/png when deployed
+      - image~1jpg
+      - image~1gif
+      - image~1png
+      - application~1octet-stream
+      - application~1pdf
 
 Resources:
   HelloWorldFunction:

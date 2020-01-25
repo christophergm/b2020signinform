@@ -1,6 +1,6 @@
 import { processCsvData } from './processCsvData'
 import { renderHtmlOutput } from './renderHtmlOutput';
-import { createPdf } from './createPdf';
+import { createPdfAsync } from './createPdf';
 import fs = require('fs')
 
 test('create simple HTML file', () => {
@@ -29,6 +29,6 @@ test('create PDF from sample CSV', () => {
   eventData.HostName = "Chris Mott";
   eventData.EventZipCode = "98117";
   let eventHtml = renderHtmlOutput(eventData);
-  createPdf(eventHtml);
+  createPdfAsync(eventHtml);
   expect.anything();
 })
